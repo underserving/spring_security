@@ -1,9 +1,12 @@
 package com.security.securityApplicaton.models;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "student_model")
 public class StudentModel {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int studentId;
     private String name;
     private int marks;

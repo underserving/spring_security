@@ -4,8 +4,7 @@ import com.security.securityApplicaton.models.StudentModel;
 import com.security.securityApplicaton.services.StudentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,5 +21,11 @@ public class StudentController {
     public ResponseEntity<List<StudentModel>> getStudents(){
         List<StudentModel> lists=service.getStudents();
      return new ResponseEntity<>(lists, HttpStatus.OK);
+    }
+
+    @PostMapping("/student")
+    public ResponseEntity<String> addStudent(@RequestBody StudentModel student){
+        service.addStudent(student);
+        return new ResponseEntity<>("student added"+student.getName(),HttpStatus.OK);
     }
 }
