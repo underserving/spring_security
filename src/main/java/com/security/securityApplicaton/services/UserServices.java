@@ -35,7 +35,7 @@ public class UserServices {
                 authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUserName(),user.getPassword()));
 
         String token= jwt.generateToken(user);
-        System.out.println(token);
+//        System.out.println(token);
         if(authenctication.isAuthenticated()){
             return token;
         }
