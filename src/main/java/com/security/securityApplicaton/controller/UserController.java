@@ -27,9 +27,10 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<String> loginUser(@RequestBody Users user){
-        if(service.verifyUser(user)) {
-            UserDto dto = new UserDto(user.getUserId(), user.getUserName());
-            return ResponseEntity.ok("success");
+        String token=service.verifyUser(user);
+        if(token != "fail") {
+//            UserDto dto = new UserDto(user.getUserId(), user.getUserName());
+            return ResponseEntity.ok(token);
         }
         return new ResponseEntity<>("register", HttpStatus.NOT_FOUND);
     }

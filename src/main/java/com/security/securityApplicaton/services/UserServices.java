@@ -30,16 +30,16 @@ public class UserServices {
     }
 
 
-    public Boolean verifyUser(Users user) {
+    public String verifyUser(Users user) {
         Authentication authenctication=
                 authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUserName(),user.getPassword()));
 
         String token= jwt.generateToken(user);
         System.out.println(token);
         if(authenctication.isAuthenticated()){
-            return true;
+            return token;
         }
-        return false;
+        return "fail";
     }
 
 //    public Users loginUser(Users user){
